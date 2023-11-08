@@ -1,0 +1,133 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#define MAX 1000
+
+
+
+// add book
+  struct library{
+  int book_id;
+  char bookname[100];
+  char bookauthor[100];
+  char genre[100];
+  };
+
+// add user
+   struct user{
+  int user_id;
+  char user_name[100];
+  char user_dept[100];
+  char email[100];
+  int p_dues;
+  };
+  
+  int main (){
+  struct library book[MAX];
+  struct user u[MAX];
+  int i,n,j,count=0;
+  int id=0;
+  char bname[100];
+  int c;
+  
+  while(j!=10){
+  printf("\nChoose a function\n");
+  printf("1. To add books \n");
+  printf("2. To search a book \n");
+  printf("3. To issue a book \n");
+  printf("4. To return a book \n");
+  printf("5. To Re issue a book \n");
+  printf("6. To Pay for dues \n");
+  printf("7. To list available books \n");
+  printf("8. To list due transactions \n");
+  printf("9. To add user \n");
+   printf("10. To exit \n");
+  printf("\nEnter number:");
+  scanf("%d",&j);
+  switch(j){
+      case 1:
+      // for input of book details
+           printf("\n Enter no. of books you want to enter:");
+           scanf("%d",&n);
+           for(i=0;i<n;i++){
+              book[i].book_id = ++id;
+           printf("\n Book ID:%d",id);
+           printf("\nEnter book name:");
+           scanf("%s",book[i].bookname);
+           printf("\nEnter book author:");
+           scanf("%s",book[i].bookauthor);
+           printf("\nEnter book genre:");
+           scanf("%s",book[i].genre);
+           count++;
+           }
+        break;
+       case 2:
+       // for search of book
+            printf("Enter the book name or author name or genre you want to search:");
+            scanf("%s",bname);
+            for(i=0;i<count;i++){
+                if(strcmp(bname,book[i].bookname)==0 ||strcmp(bname,book[i].bookauthor)==0 ||strcmp(bname,book[i].genre)==0){
+                     printf("\nBook details:");
+                            printf("\nBook id:%d",book[i].book_id);
+                            printf("\nBook name:%s",book[i].bookname);
+                            printf("\nBook author:%s",book[i].bookauthor);
+                            printf("\nBook genre:%s",book[i].genre);
+                    
+                }
+                  
+            }  
+       break;
+    
+        case 7:
+        // for list of book
+           if (count==0)  
+           {  
+            printf(" \nThere is no book!\n ");  
+           }  
+           else  
+           {  
+             printf(" \nThe list of books are: ");  
+             for(i=0; i < count; i++)  
+             {  
+               printf("\n The id of book is: %d",book[i].book_id);
+               printf(" \nThe name of the book is: %s ", book[i].bookname);  
+               printf(" \nThe name of the author is: %s ", book[i].bookauthor);
+               printf("\n The genre of book is: %s",book[i].genre);
+             }
+           }
+        break;
+        
+        case 9:
+             printf("\n Enter no. of user you want to enter:");
+           scanf("%d",&n);
+           for(i=0;i<n;i++){
+              u[i].user_id = ++id;
+           printf("\n user ID:%d",id);
+           printf("\nEnter user name:");
+           scanf("%s",u[i].user_name);
+           printf("\nEnter user department:");
+           
+           scanf("%s",u[i].user_dept);
+           printf("\nEnter user email :");
+           scanf("%s",u[i].email);
+           printf("\nEnter pending dues:");
+           scanf("%d",&u[i].p_dues);
+           }
+           break;    
+  
+  // for output of book details
+        case 10:
+          for(i=0;i<count;i++){
+              printf("Book ID: %d\n",book[i].book_id);
+          printf("Book name: %s\n",book[i].bookname);
+          printf("Book author: %s\n",book[i].bookauthor);
+          printf("Book genre:%s\n",book[i].genre);
+          }  
+          exit(0);
+  
+          
+        default:
+        printf("invalid number entered");
+  }    
+}
+  }
